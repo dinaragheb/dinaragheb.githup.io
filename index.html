@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Food</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    
+    <div id="app" class="container">
+
+       
+
+
+        <h1>{{ title }}</h1>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Maximaler Preis" v-model="maxPrice" @keyup.enter="applyFilter">
+            <button class="btn btn-primary" @click="applyFilter">Filter</button>
+          </div>
+          
+
+        
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Bild</th>
+                <th>Name</th>
+                <th>Kalorien (kcal)</th>
+                <th>Preis (€)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(food, index) in filteredFoods" :key="food.id">
+                <td><img class="img" :src="food.image" /> </td>
+
+                <td>{{ food.title }}</td>
+                <td>{{ food.calories }}kcal</td>
+                <td>{{ food.price }}€</td>
+                <td>
+                  <button class="btn btn-danger" @click="removeItem(index)" :disabled="filteredFoods.length === 1">Entfernen</button>
+                </td>
+              </tr>
+              <tr v-if="filteredFoods.length === 0">
+                <td colspan="4" class="text-center">Keine Einträge gefunden</td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+
+    <script src="./js/foods.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
