@@ -1,0 +1,7 @@
+/* style.css */
+.img {
+    width: 100px;      /* Breite des Bildes anpassen */
+    height: auto;      /* Höhe proportional zur Breite anpassen */
+    object-fit: cover; /* Bildausschnitt anpassen, falls es unterschiedliche Seitenverhältnisse gibt */
+    border-radius: 8px; /* Optional: Abgerundete Ecken */
+}
